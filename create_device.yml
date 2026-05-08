@@ -1,0 +1,29 @@
+---
+- name: Configure Devices in Satellite - Austin Site
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    sat_url: "https://nuc6.aus.redhat.com"
+    sat_org: "Red Hat"
+    sat_domain: "aus.redhat.com"
+    hostname: "{{ hostname }}"
+
+  tasks:
+    - name: Create Managed Host in Satellite
+      redhat.satellite.host:
+        server_url: "{{ sat_url }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        validate_certs: false
+        name: "{{ hostname }}.{{ sat_domain }}"
+        organization: "{{ sat_org }}"
+        location: "Austin"
+        ip: "{{ ip_address }}"
+        mac: "{{ mac_address }}"
+        hostgroup: "network"
+        managed: no     # Enable orchestration (DHCP/DNS/TFTP)
+        build: no       # Put host in 'Pending Installation' mode
+        state: present
+      delegate_to: localhost
