@@ -23,7 +23,7 @@
         ip: "{{ ip_address }}"
         mac: "{{ mac_address }}"
         hostgroup: "network"
-        managed: no     # Enable orchestration (DHCP/DNS/TFTP)
+        managed: yes    # Enable orchestration (DHCP/DNS/TFTP)
         build: no       # Put host in 'Pending Installation' mode
         state: present
       delegate_to: localhost
