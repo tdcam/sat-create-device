@@ -9,6 +9,8 @@
     sat_org: "Red Hat"
     sat_domain: "aus.redhat.com"
     hostname: "{{ hostname }}"
+    hostgroup: "{{ targethostgroup }}"
+    build: "{{ mybuild }}"
 
   tasks:
     - name: Create Managed Host in Satellite
@@ -22,8 +24,8 @@
         location: "Austin"
         ip: "{{ ip_address }}"
         mac: "{{ mac_address }}"
-        hostgroup: "network"
-        managed: yes    # Enable orchestration (DHCP/DNS/TFTP)
-        build: no       # Put host in 'Pending Installation' mode
+        hostgroup: "{{ hostgroup }}"
+        managed: yes            # Enable orchestration (DHCP/DNS/TFTP)
+        build: "{{ build }}"    # Put host in 'Pending Installation' mode
         state: present
       delegate_to: localhost
