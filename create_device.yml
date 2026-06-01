@@ -7,7 +7,7 @@
   vars:
     sat_url: "https://nuc6.aus.redhat.com"
     sat_org: "Red Hat"
-    sat_domain: "aus.redhat.com"
+    sat_domain: "{{ domain_name }}"
     hostname: "{{ hostname }}"
     hostgroup: "{{ targethostgroup }}"
     build: "{{ mybuild }}"
